@@ -38,12 +38,9 @@ public class StudentMain extends JFrame {
 		StudentForm form = new StudentForm();
 
 		StudentTableGUI tableGUI = new StudentTableGUI();
-		
 
 		JPanel containerPanel = new JPanel();
 
-		// containerPanel.setLayout(new BoxLayout(containerPanel,
-		// BoxLayout.Y_AXIS));
 		GridBagConstraints gbagUP = new GridBagConstraints();
 		gbagUP.fill = GridBagConstraints.VERTICAL;
 		gbagUP.gridx = 1;
@@ -55,14 +52,6 @@ public class StudentMain extends JFrame {
 		gbagDown.gridx = 0;
 		gbagDown.gridy = 1;
 		containerPanel.add(tableGUI.createTableGUI(), gbagDown);
-//		List<String> courses = new ArrayList<String>();
-//		courses.add("Maths");
-//		courses.add("Science");
-//		Student student = new Student(1, "Purva", 5, "B", "Dance", courses);
-//
-//		tableGUI.addStudent(student);
-		// add(form.createFormGUI());
-		// add(tableGUI.createTableGUI());
 
 		form.setAddButtonListner(new ActionListener() {
 			@Override
@@ -76,24 +65,21 @@ public class StudentMain extends JFrame {
 				form.clearFields();
 			}
 		});
-		
-//		component  -> 
-	
+
 		tableGUI.setTableListner(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
-				if(!tableGUI.selectedRow()){
-				Student student = tableGUI.addValuesTofields();
-//				tableGUI.trytoSetValues();
-				if (student != null) {
-					form.addValuesTofields(student);
-				}
-				}else{
+				if (!tableGUI.selectedRow()) {
+					Student student = tableGUI.addValuesTofields();
+					if (student != null) {
+						form.addValuesTofields(student);
+					}
+				} else {
 					form.clearFields();
 				}
 			}
-		});		
-		
+		});
+
 		add(containerPanel, BorderLayout.CENTER);
 		setVisible(true);
 	}
@@ -102,5 +88,3 @@ public class StudentMain extends JFrame {
 		StudentMain main = new StudentMain();
 	}
 }
-//delete -. selection on similar row which is modify
-//check if seletcedrow and if  

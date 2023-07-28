@@ -22,7 +22,7 @@ import com.citiustech.model.Student;
 public class StudentTableGUI {
 
 	private CustomTableModel model;
-	JTable table;
+	private JTable table;
 	private CoursesComponent coursesComp;
 
 	/**
@@ -61,17 +61,6 @@ public class StudentTableGUI {
 		model.addStudent(student);
 	}
 
-	public void trytoSetValues(){
-//		id.setText(tableModel.getValueAt(selectRowIndex, 0).toString());
-		
-		int selectedRowIndex = table.getSelectedRow();
-		if(selectedRowIndex == 1){
-			Object id  = model.getValueAt(selectedRowIndex, 0);
-			Object name  = model.getValueAt(selectedRowIndex, 1);
-		}
-
-	}
-	
 	public Student addValuesTofields() {
 		Student selectedStudentRow = model.getSelectedRecord(table.getSelectedRow());
 		return selectedStudentRow;

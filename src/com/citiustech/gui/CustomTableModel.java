@@ -65,10 +65,6 @@ public class CustomTableModel extends AbstractTableModel {
 		fireTableDataChanged();
 	}
 
-	// public void modifyStudent(){
-	// System.out.println(studentList.get(0));
-	// }
-
 	public Student getSelectedRecord(int row) {
 		return studentList.get(row);
 

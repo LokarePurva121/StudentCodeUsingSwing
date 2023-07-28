@@ -17,7 +17,7 @@ import javax.swing.table.TableCellRenderer;
 
 import com.citiustech.model.Student;
 
-public class StudentForm{
+public class StudentForm {
 
 	private JLabel title, idLabel, nameLabel, standardLabel, divisionLabel, clubLabel, examLabel;
 	private JTextField name, id, standard, division;
@@ -37,10 +37,9 @@ public class StudentForm{
 
 		JPanel formPanel = new JPanel();
 		formPanel.setPreferredSize(new Dimension(400, 200));
-		
+
 		title = new JLabel("Fill the form.");
-		
-		
+
 		idLabel = new JLabel("ID : ");
 		nameLabel = new JLabel("Name : ");
 		standardLabel = new JLabel("Standard : ");
@@ -62,7 +61,6 @@ public class StudentForm{
 
 		addButton = new JButton("   Add  ");
 
-		
 		JPanel panelId = new JPanel();
 		formPanel.add(panelId);
 
@@ -130,7 +128,7 @@ public class StudentForm{
 		}
 
 		System.out.println(getSatusExam);
-		
+
 		st.setId(studentId);
 		st.setName(studentName);
 		st.setStandard(studentStandard);
@@ -141,7 +139,6 @@ public class StudentForm{
 		return st;
 
 	}
-
 
 	/**
 	 * clear the all input fields
@@ -169,32 +166,28 @@ public class StudentForm{
 
 	public void addValuesTofields(Student student) {
 
-		// table.getValueAt(selectedrow,0);
-
 		String studentId = Integer.toString(student.getId());
 		String studentName = student.getName();
 		String studentStandard = Integer.toString(student.getStandard());
 		String studentDivision = student.getDivision();
 		String studentClub = student.getClub();
 		List<String> studentCourses = student.getExam();
-	
 
 		id.setText(studentId);
 		name.setText(studentName);
 		standard.setText(studentStandard);
 		division.setText(studentDivision);
 		club.setSelectedItem(studentClub);
-		
-		if(studentCourses.contains(mathsExam.getText())){
+
+		if (studentCourses.contains(mathsExam.getText())) {
 			mathsExam.setSelected(true);
 		}
-		if(studentCourses.contains(scienceExam.getText())){
+		if (studentCourses.contains(scienceExam.getText())) {
 			scienceExam.setSelected(true);
 		}
-		if(studentCourses.contains(englishExam.getText())){
+		if (studentCourses.contains(englishExam.getText())) {
 			englishExam.setSelected(true);
 		}
-		
 
 	}
 

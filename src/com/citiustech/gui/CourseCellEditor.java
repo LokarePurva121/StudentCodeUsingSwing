@@ -37,23 +37,9 @@ public class CourseCellEditor extends AbstractCellEditor implements TableCellEdi
 		}
 	}
 
-	
-	// public void deleteCourse(Student student){
-	// System.out.println(student);
-	// cc = new CoursesComponent();
-	//
-	// cc.deleteCourse(student);
-	// }
-
 	@Override
 	public Object getCellEditorValue() {
 		return courseList;
 	}
 
-	// student object ->
-
-	// [student object selected ...replace the list with updated list ..when
-	// disselcted chcekbox]
-	// checkbox disselct kelyavr capture that even and get the selected row
-	// which is student object and modify that student list with the new data
 }

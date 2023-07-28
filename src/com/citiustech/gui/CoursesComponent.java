@@ -30,7 +30,6 @@ public class CoursesComponent extends JPanel {
 	private int currHeight = -1;
 	private int row = -1;
 	private JCheckBox checkbox;
-	// private JCheckBox[] checkbox;
 
 	public CoursesComponent() {
 
@@ -71,7 +70,6 @@ public class CoursesComponent extends JPanel {
 			checkbox.addItemListener(new ItemListener() {
 				@Override
 				public void itemStateChanged(ItemEvent e) {
-					// 1 : Selected & 2 : Deselect
 					if (e.getStateChange() == 2) {
 						String text = ((JCheckBox) e.getSource()).getText();
 						System.out.println(text);
