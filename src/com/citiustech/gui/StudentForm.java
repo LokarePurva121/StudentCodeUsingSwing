@@ -1,6 +1,7 @@
 package com.citiustech.gui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,11 @@ public class StudentForm{
 	public JPanel createFormGUI() {
 
 		JPanel formPanel = new JPanel();
-
+		formPanel.setPreferredSize(new Dimension(400, 200));
+		
+		title = new JLabel("Fill the form.");
+		
+		
 		idLabel = new JLabel("ID : ");
 		nameLabel = new JLabel("Name : ");
 		standardLabel = new JLabel("Standard : ");
@@ -57,6 +62,7 @@ public class StudentForm{
 
 		addButton = new JButton("   Add  ");
 
+		
 		JPanel panelId = new JPanel();
 		formPanel.add(panelId);
 
@@ -114,7 +120,6 @@ public class StudentForm{
 		getSatusExam = new ArrayList<>();
 
 		if (mathsExam.isSelected()) {
-			
 			getSatusExam.add(mathsExam.getText());
 		}
 		if (scienceExam.isSelected()) {
@@ -136,10 +141,7 @@ public class StudentForm{
 		return st;
 
 	}
-//	
-//	public List<String> sentDataToTableGUI(){
-//		return getSatusExam;
-//	}
+
 
 	/**
 	 * clear the all input fields
@@ -174,7 +176,7 @@ public class StudentForm{
 		String studentStandard = Integer.toString(student.getStandard());
 		String studentDivision = student.getDivision();
 		String studentClub = student.getClub();
-//		List<String> studentCourses = student.getExam();
+		List<String> studentCourses = student.getExam();
 	
 
 		id.setText(studentId);
@@ -183,6 +185,15 @@ public class StudentForm{
 		division.setText(studentDivision);
 		club.setSelectedItem(studentClub);
 		
+		if(studentCourses.contains(mathsExam.getText())){
+			mathsExam.setSelected(true);
+		}
+		if(studentCourses.contains(scienceExam.getText())){
+			scienceExam.setSelected(true);
+		}
+		if(studentCourses.contains(englishExam.getText())){
+			englishExam.setSelected(true);
+		}
 		
 
 	}

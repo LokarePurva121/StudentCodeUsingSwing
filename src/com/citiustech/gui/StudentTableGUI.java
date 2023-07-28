@@ -1,20 +1,19 @@
 package com.citiustech.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Panel;
+import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -24,7 +23,7 @@ public class StudentTableGUI {
 
 	private CustomTableModel model;
 	JTable table;
-	
+	private CoursesComponent coursesComp;
 
 	/**
 	 * Creating a arrayList which can hold object of studnet type and passing
@@ -37,15 +36,14 @@ public class StudentTableGUI {
 		JPanel tablePanel = new JPanel();
 
 		List<Student> studentList = new ArrayList<>();
-				
-		Object[][][] nestedTableData = {{{"Maths"},{"Science"},{"English"}}};
-		
+
 		model = new CustomTableModel(studentList);
 
 		table = new JTable(model);
-//		table.setRowHeight(30);
-	
-		table.getColumnModel().getColumn(5).setCellRenderer(new TableActionCellRenderer());
+		table.setPreferredScrollableViewportSize(new Dimension(600, 500));
+
+		table.getColumnModel().getColumn(5).setCellRenderer(new CourseCellRenderer());
+		table.getColumnModel().getColumn(5).setCellEditor(new CourseCellEditor());
 
 		JScrollPane MyScrollPane = new JScrollPane(table);
 
@@ -53,7 +51,6 @@ public class StudentTableGUI {
 
 		return tablePanel;
 	}
-	
 
 	/**
 	 * Add the student into the customTableModel
@@ -63,13 +60,26 @@ public class StudentTableGUI {
 	public void addStudent(Student student) {
 		model.addStudent(student);
 	}
+
+	public void trytoSetValues(){
+//		id.setText(tableModel.getValueAt(selectRowIndex, 0).toString());
+		
+		int selectedRowIndex = table.getSelectedRow();
+		if(selectedRowIndex == 1){
+			Object id  = model.getValueAt(selectedRowIndex, 0);
+			Object name  = model.getValueAt(selectedRowIndex, 1);
+		}
+
+	}
 	
-
 	public Student addValuesTofields() {
-
 		Student selectedStudentRow = model.getSelectedRecord(table.getSelectedRow());
 		return selectedStudentRow;
 
+	}
+
+	public boolean selectedRow() {
+		return table.getSelectionModel().isSelectionEmpty();
 	}
 
 	/**
@@ -100,6 +110,5 @@ public class StudentTableGUI {
 		sorter.setSortKeys(sortKeys);
 		table.setRowSorter(sorter);
 	}
-
 
 }

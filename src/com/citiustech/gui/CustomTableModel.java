@@ -48,6 +48,7 @@ public class CustomTableModel extends AbstractTableModel {
 		default:
 			return null;
 		}
+
 	}
 
 	@Override
@@ -55,29 +56,21 @@ public class CustomTableModel extends AbstractTableModel {
 		return columnNames[column];
 	}
 
-//	public Class getColumnClass(int col) {
-//		if (getRowCount() < 1) {
-//			return null;
-//		}
-//		return studentList.getClass();
-//	}
-//
-//	public boolean isCellEditable(int row, int col){
-//	      return true;
-//	    }
-//	
-//	 public void setValueAt(Student value, int row, int col) {
-////	      data[row][col] = value;
-//		 studentList.add(value);
-//	      fireTableCellUpdated(row, col);
-//	    }
-	
+	public boolean isCellEditable(int row, int col) {
+		return true;
+	}
+
 	public void addStudent(Student student) {
 		studentList.add(student);
 		fireTableDataChanged();
 	}
 
+	// public void modifyStudent(){
+	// System.out.println(studentList.get(0));
+	// }
+
 	public Student getSelectedRecord(int row) {
 		return studentList.get(row);
+
 	}
 }
